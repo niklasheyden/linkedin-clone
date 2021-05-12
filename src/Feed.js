@@ -31,7 +31,7 @@ function Feed() {
     e.preventDefault();
 
     db.collection('posts').add({
-      name: 'Sonny Sangha',
+      name: 'Niklas Heyden',
       description: 'this is a test',
       message: input,
       photoUrl: '',
