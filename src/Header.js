@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { auth } from './firebase';
+import { logout } from './features/userSlice';
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
 import SearchIcon from '@material-ui/icons/Search';
@@ -9,6 +12,13 @@ import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const logoutOfApp = () => {
+    dispatch(logout())
+    auth.signOut();
+  }
+
   return (
     <div className="header">
       <div className="header_left">
@@ -19,7 +29,7 @@ function Header() {
 
         <div className="header_search">
           <SearchIcon />
-          <input type="text" />
+          <input placeholder='Search' type="text" />
         </div>
       </div>
 
@@ -29,7 +39,11 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
         <HeaderOption Icon={ChatIcon} title="Messaging"/>
         <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-        <HeaderOption avatar="https://compassionate-leakey-e9b16b.netlify.app/images/IG_Sonny.jpeg" title="me" />
+        <HeaderOption
+          avatar="https://compassionate-leakey-e9b16b.netlify.app/images/IG_Sonny.jpeg"
+          title="me"
+          onClick={logoutOfApp}
+        />
       </div>
     </div>
   )
