@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from 'react-redux';
 import { auth } from './firebase';
 import { logout } from './features/userSlice';
+import { selectUser } from './features/userSlice';
+import { useSelector } from 'react-redux';
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
 import SearchIcon from '@material-ui/icons/Search';
@@ -40,7 +42,7 @@ function Header() {
         <HeaderOption Icon={ChatIcon} title="Messaging"/>
         <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
         <HeaderOption
-          avatar="https://compassionate-leakey-e9b16b.netlify.app/images/IG_Sonny.jpeg"
+          avatar={true}
           title="me"
           onClick={logoutOfApp}
         />
